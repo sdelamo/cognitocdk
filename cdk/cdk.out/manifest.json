@@ -1,0 +1,88 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "DemoCdk.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "DemoCdk.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "DemoCdk": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "DemoCdk.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/748fe8505ee41f7037d2cd5f664967e2ee130b52b62fbee3cdffe53d67e64f6c.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "DemoCdk.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "DemoCdk.assets"
+      ],
+      "metadata": {
+        "/DemoCdk/micronautguidepool/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "micronautguidepool25A35D10"
+          }
+        ],
+        "/DemoCdk/micronautguidepool/micronautguidepool-domain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "micronautguidepoolmicronautguidepooldomain2BA239C2"
+          }
+        ],
+        "/DemoCdk/micronautguidepool/micronautguidepool-client/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "micronautguidepoolmicronautguidepoolclient24D4F7F1"
+          }
+        ],
+        "/DemoCdk/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/DemoCdk/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/DemoCdk/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/DemoCdk/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "DemoCdk"
+    }
+  }
+}
